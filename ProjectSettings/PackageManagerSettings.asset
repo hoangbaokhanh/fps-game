@@ -30,7 +30,9 @@ MonoBehaviour:
     m_Scopes:
     - com.cysharp.unitask
     - com.dbrizov.naughtyattributes
+    - com.neuecc.unirx
     - com.openupm
+    - jillejr.newtonsoft.json-for-unity
     m_IsDefault: 0
     m_Capabilities: 0
   m_UserSelectedRegistryName: 
@@ -44,7 +46,9 @@ MonoBehaviour:
       m_Scopes:
       - com.cysharp.unitask
       - com.dbrizov.naughtyattributes
+      - com.neuecc.unirx
       - com.openupm
+      - jillejr.newtonsoft.json-for-unity
       m_IsDefault: 0
       m_Capabilities: 0
     m_Modified: 0
@@ -53,5 +57,7 @@ MonoBehaviour:
     m_Scopes:
     - com.cysharp.unitask
     - com.dbrizov.naughtyattributes
+    - com.neuecc.unirx
     - com.openupm
+    - jillejr.newtonsoft.json-for-unity
     m_SelectedScopeIndex: 0
