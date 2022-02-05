@@ -73,3 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4412f37b47a64d0597ea35924427beb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventSystem: {fileID: 5044258803824787333, guid: ddc5fd425cbe8654bbb6d0a014c7dbee,
+    type: 3}
+  rewiredManager: {fileID: 4541625114824050679, guid: a2db5c40974a2f84191b3b7df6abc95b,
+    type: 3}

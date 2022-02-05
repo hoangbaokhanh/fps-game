@@ -1,6 +1,8 @@
-﻿using NaughtyAttributes;
+﻿using Fps.Input;
+using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Fps.Character.Player
 {
@@ -22,12 +24,21 @@ namespace Fps.Character.Player
         [SerializeField, Required, BoxGroup("Visual Prefab")]
         private GameObject handgun;
 
+        [Inject] private GameInput gameInput;
+
         private ReactiveProperty<WeaponClass> wpClass = new ReactiveProperty<WeaponClass>(WeaponClass.AssaultRifle);
         private PlayerVisual playerVisual;
 
         private void Start()
         {
             wpClass.Where(wp => wp != WeaponClass.None).Subscribe(OnWeaponChanged).AddTo(this);
+            gameInput.InputStream.Subscribe(OnInput).AddTo(this);
+            gameInput.SetActive(true);
+        }
+
+        private void OnInput(Input.Input input)
+        {
+            // TODO: binding input to action
         }
 
         private void OnWeaponChanged(WeaponClass weaponClass)
