@@ -40,6 +40,12 @@ namespace Fps.Animation
         {
             SetTrigger(AnimationParameter.AimIn);
         }
+        
+        [Button]
+        public void EndAim()
+        {
+            SetTrigger(AnimationParameter.AimOut);
+        }
 
         [Button]
         public void KnifeAttack()
@@ -59,6 +65,11 @@ namespace Fps.Animation
         public void ReloadAmmo(bool isOutOfAmmo)
         {
             SetTrigger(isOutOfAmmo ? AnimationParameter.ReloadOutOfAmmo : AnimationParameter.Reload);
+        }
+
+        public void Fire()
+        {
+            SetTrigger(AnimationParameter.Fire);
         }
     }
 }
