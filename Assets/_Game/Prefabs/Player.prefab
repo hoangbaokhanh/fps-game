@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 3747593884520793149}
   movementSpeed: 10
+  movementSpeedMultiplier: 1.5
   rotationSpeed: 10
   playerCamera: {fileID: 3453298119844212861}
   assault: {fileID: 4018633969008304938, guid: 92605d955eb2f444f8ee827492d15760, type: 3}

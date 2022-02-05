@@ -30,9 +30,6 @@ namespace Fps.Animation
             speedCts.Cancel();
             speedCts = new CancellationTokenSource();
             var currentSpeed = GetFloat(AnimationParameter.Speed);
-            Debug.LogError("Curren Speed " + currentSpeed);
-            Debug.LogError("run Speed " + RUN_SPEED);
-            
             TransitionParam(AnimationParameter.Speed, currentSpeed, RUN_SPEED, SMOOTH_STEP, speedCts.Token)
                 .Forget();
         }

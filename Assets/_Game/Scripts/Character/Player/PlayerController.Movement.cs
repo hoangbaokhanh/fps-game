@@ -8,15 +8,16 @@ namespace Fps.Character.Player
         [SerializeField, Required] private CharacterController characterController;
  
         [SerializeField] private int movementSpeed;
+        [SerializeField] private float movementSpeedMultiplier;
         [SerializeField] private int rotationSpeed;
 
         private float xRotation = 0f;
         private void OnInput(Input.Input input)
         {
             var moveVector = transform.right * input.MoveVector.x + transform.forward * input.MoveVector.y;
-            
+            var moveSpeed = input.Sprint ? movementSpeed * movementSpeedMultiplier : movementSpeed;
             Rotation(input.LookVector);
-            characterController.Move(moveVector * movementSpeed * Time.deltaTime);
+            characterController.Move(moveVector * moveSpeed * Time.deltaTime);
             if (moveVector != Vector3.zero)
             {
                 if (input.Sprint)
