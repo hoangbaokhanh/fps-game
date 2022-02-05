@@ -13,10 +13,10 @@ namespace Fps.Character.Player
         Handgun,
     }
 
-    public class PlayerController : MonoBehaviour
+    public partial class PlayerController : MonoBehaviour
     {
         [SerializeField, Required] private Camera playerCamera;
-
+        
         // Todo: Should load them dynamically, but ok for reference atm;
         [SerializeField, Required, BoxGroup("Visual Prefab")]
         private GameObject assault;
@@ -35,12 +35,8 @@ namespace Fps.Character.Player
             gameInput.InputStream.Subscribe(OnInput).AddTo(this);
             gameInput.SetActive(true);
         }
-
-        private void OnInput(Input.Input input)
-        {
-            // TODO: binding input to action
-        }
-
+        
+        
         private void OnWeaponChanged(WeaponClass weaponClass)
         {
             LoadVisual(weaponClass);
@@ -55,7 +51,7 @@ namespace Fps.Character.Player
         {
             var weapon = weaponClass switch
             {
-                WeaponClass.AssaultRifle => Instantiate(assault, transform),
+                WeaponClass.AssaultRifle => Instantiate(assault, playerCamera.transform),
                 WeaponClass.Handgun => Instantiate(handgun, transform),
                 _ => null
             };
