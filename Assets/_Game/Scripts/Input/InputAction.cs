@@ -7,5 +7,6 @@
         Fire,
         FireHorizontal,
         FireVertical,
+        Sprint
     }
 }

@@ -94,7 +94,10 @@ namespace Fps.Animation
             void UpdateParam(float value, CancellationToken cancellationToken)
             {
                 ct.ThrowIfCancellationRequested();
-                SetFloat(param, Mathf.Lerp(start, end, value));
+                if(animator != null)
+                {
+                    SetFloat(param, Mathf.Lerp(start, end, value));
+                }
             }
 
             await SmoothStep(step, UpdateParam, ct);

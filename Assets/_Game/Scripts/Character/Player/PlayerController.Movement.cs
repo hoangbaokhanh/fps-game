@@ -17,6 +17,21 @@ namespace Fps.Character.Player
             
             Rotation(input.LookVector);
             characterController.Move(moveVector * movementSpeed * Time.deltaTime);
+            if (moveVector != Vector3.zero)
+            {
+                if (input.Sprint)
+                {
+                    playerVisual.Run();
+                }
+                else
+                {
+                    playerVisual.Walk();
+                }
+            }
+            else
+            {
+                playerVisual.Idle();
+            }
         }
 
         private void Rotation(Vector2 axis)
