@@ -1,6 +1,8 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using Fps.Character.Player;
+using Fps.Character.Zombie;
+using Fps.Common;
 using UniRx;
 using UnityEngine;
 
@@ -12,7 +14,7 @@ namespace Fps.Character.Weapon
         
         [SerializeField] private ParticleSystem muzzle;
         [SerializeField] private ParticleSystem spark;
-       
+        
         public int MaxAmmo;
         public int MaxDistance;
         public int Damage;
@@ -44,12 +46,15 @@ namespace Fps.Character.Weapon
             {
                 Ammo.Value -= 1;
                 visual.Fire();
-                
-                //muzzle.Play();
+                muzzle.Play();
                 spark.Play();
                 if (Physics.Raycast(from, to, out var hit, MaxDistance))
                 {
-                    Debug.Log(hit.transform.name);
+                    if (hit.collider.IsZombie())
+                    {
+                        var zombie = hit.transform.GetComponent<ZombieController>();
+                        zombie.TakeDamage(hit.transform.position, Damage);
+                    }
                 }
             }
         }

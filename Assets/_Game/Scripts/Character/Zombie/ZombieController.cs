@@ -7,15 +7,15 @@ namespace Fps.Character.Zombie
 {
     public class ZombieController : MonoBehaviour
     {
-        [SerializeField] private float baseHealth;
-        [SerializeField] private float movementSpeed;
+        [SerializeField] private int baseHealth;
+        [SerializeField] private int movementSpeed;
         
         [SerializeField] private ZombieAnimationController animationController;
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private GameObject player;
         
 
-        private float health;
+        private int health;
 
         private void Start()
         {
@@ -25,7 +25,7 @@ namespace Fps.Character.Zombie
 
         public bool IsAlive() => health > 0;
         
-        public void TakeDamage(Vector3 position, float damage)
+        public void TakeDamage(Vector3 position, int damage)
         {
             if (IsAlive())
             {

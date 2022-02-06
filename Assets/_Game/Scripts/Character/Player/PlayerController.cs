@@ -1,5 +1,8 @@
-﻿using Fps.Character.Weapon;
+﻿using System;
+using Fps.Character.Weapon;
+using Fps.Common;
 using Fps.Input;
+using Fps.Item;
 using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
@@ -25,19 +28,26 @@ namespace Fps.Character.Player
         [SerializeField, Required, BoxGroup("Visual Prefab")]
         private GameObject handgun;
 
-        [SerializeField] private float shootDistance;
+        [SerializeField] private int maxHealth;
 
         [Inject] private GameInput gameInput;
 
         private ReactiveProperty<WeaponClass> wpClass = new ReactiveProperty<WeaponClass>(WeaponClass.AssaultRifle);
+        private IntReactiveProperty health = new IntReactiveProperty();
         private PlayerVisual playerVisual;
         private IWeapon gun;
 
         private void Start()
         {
             wpClass.Where(wp => wp != WeaponClass.None).Subscribe(OnWeaponChanged).AddTo(this);
+            health.Value = maxHealth;
             gameInput.InputStream.Subscribe(OnInput).AddTo(this);
             gameInput.SetActive(true);
+            
+            health.PairWithPrevious()
+                .Where(snapshot => snapshot.Previous > snapshot.Current)
+                .Subscribe(_ => OnHurt())
+                .AddTo(this);
         }
         
         private void OnInput(Input.Input input)
@@ -49,6 +59,16 @@ namespace Fps.Character.Player
             {
                 Fire();
             }
+        }
+
+        private void OnHurt()
+        {
+            // get attacked
+        }
+
+        public void Heal(int healAmount)
+        {
+            health.Value = Mathf.Min(maxHealth, health.Value + healAmount);
         }
         
         private void OnWeaponChanged(WeaponClass weaponClass)
@@ -96,7 +116,11 @@ namespace Fps.Character.Player
             gun.Attack(playerCamera.transform.position, playerCamera.transform.forward);
         }
 
-
+        public void AddAmmo(WeaponClass wp, int ammo)
+        {
+            
+        }
+        
         [Button]
         private void SwitchToAssault()
         {
