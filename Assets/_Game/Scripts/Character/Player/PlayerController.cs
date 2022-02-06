@@ -21,7 +21,7 @@ namespace Fps.Character.Player
     {
         [SerializeField, Required] private Camera playerCamera;
         
-        // Todo: Should load them dynamically, but ok for reference atm;
+ 
         [SerializeField, Required, BoxGroup("Visual Prefab")]
         private GameObject assault;
 
@@ -34,8 +34,10 @@ namespace Fps.Character.Player
 
         private ReactiveProperty<WeaponClass> wpClass = new ReactiveProperty<WeaponClass>(WeaponClass.AssaultRifle);
         private IntReactiveProperty health = new IntReactiveProperty();
+        public IObservable<int> Health => health.AsObservable();
+
         private PlayerVisual playerVisual;
-        private IWeapon gun;
+        private Gun gun;
 
         private void Start()
         {
@@ -58,6 +60,16 @@ namespace Fps.Character.Player
             if (input.Fire)
             {
                 Fire();
+            }
+
+            if (input.HandGun)
+            {
+                SetWeaponClass(WeaponClass.Handgun);
+            }
+
+            if (input.Assult)
+            {
+                SetWeaponClass(WeaponClass.AssaultRifle);
             }
         }
 
@@ -91,7 +103,7 @@ namespace Fps.Character.Player
             var weapon = weaponClass switch
             {
                 WeaponClass.AssaultRifle => Instantiate(assault, playerCamera.transform),
-                WeaponClass.Handgun => Instantiate(handgun, transform),
+                WeaponClass.Handgun => Instantiate(handgun, playerCamera.transform),
                 _ => null
             };
 
@@ -121,10 +133,6 @@ namespace Fps.Character.Player
             gun.Attack(playerCamera.transform.position, playerCamera.transform.forward);
         }
 
-        public void AddAmmo(WeaponClass wp, int ammo)
-        {
-            
-        }
         
         [Button]
         private void SwitchToAssault()

@@ -20,14 +20,15 @@ namespace Fps.Character.Weapon
         public int Damage;
         public float ReloadTimeSec;
         
-        private IntReactiveProperty Ammo = new IntReactiveProperty();
+        private IntReactiveProperty ammo = new IntReactiveProperty();
+        public IObservable<int> Ammo => ammo.AsObservable();
 
         private bool isReloading = false;
 
         private void Start()
         {
-            Ammo.Value = MaxAmmo;
-            Ammo.Where(ammo => ammo <= 0).Subscribe(OnOutOfAmmo).AddTo(this);
+            ammo.Value = MaxAmmo;
+            ammo.Where(ammo => ammo <= 0).Subscribe(OnOutOfAmmo).AddTo(this);
         }
 
         private void OnOutOfAmmo(int ammoLeft)
@@ -37,14 +38,14 @@ namespace Fps.Character.Weapon
 
         public bool CanAttack()
         {
-            return Ammo.Value > 0 && !isReloading;
+            return ammo.Value > 0 && !isReloading;
         }
 
         public void Attack(Vector3 from, Vector3 to)
         {
             if (CanAttack())
             {
-                Ammo.Value -= 1;
+                ammo.Value -= 1;
                 visual.Fire();
                 muzzle.Play();
                 spark.Play();
@@ -53,7 +54,7 @@ namespace Fps.Character.Weapon
                     if (hit.collider.IsZombie())
                     {
                         var zombie = hit.transform.GetComponent<ZombieController>();
-                        zombie.TakeDamage(hit.transform.position, Damage);
+                        zombie.TakeDamage(Damage);
                     }
                 }
             }
@@ -64,7 +65,7 @@ namespace Fps.Character.Weapon
             isReloading = true;
             visual.Reload(isOutOfAmmo);
             await UniTask.Delay(TimeSpan.FromSeconds(ReloadTimeSec));
-            Ammo.Value = MaxAmmo;
+            ammo.Value = MaxAmmo;
             isReloading = false;
         }
     }

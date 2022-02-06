@@ -3,6 +3,7 @@ using Fps.Animation;
 using Fps.Character.Player;
 using Fps.Common;
 using Fps.Gameplay;
+using Fps.Message;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,12 +16,14 @@ namespace Fps.Character.Zombie
         [SerializeField] private int baseHealth;
         [SerializeField] private int movementSpeed;
         [SerializeField] private int damage;
+        [SerializeField] private Transform bloodSpawn;
 
         [SerializeField] private ZombieAnimationController animationController;
         [SerializeField] private NavMeshAgent agent;
         private PlayerController player;
 
         [Inject] private GameManager gameManager;
+        [Inject] private VfxManager vfxManager;
 
         private int health;
         
@@ -33,16 +36,20 @@ namespace Fps.Character.Zombie
 
         public bool IsAlive() => health > 0;
 
-        public void TakeDamage(Vector3 position, int damage)
+        public void TakeDamage(int damage)
         {
             if (IsAlive())
             {
                 health -= damage;
 
-                // TODO: spawn blood particle here
+                vfxManager.PlayBloodVfx(bloodSpawn.position);
 
                 if (health <= 0)
                 {
+                    MessageBroker.Default.Publish(new ZombieDie()
+                    {
+                        Position = transform.position
+                    });
                     Destroy(gameObject);
                 }
             }
@@ -62,7 +69,7 @@ namespace Fps.Character.Zombie
                 var _player = other.GetComponent<PlayerController>();
                 if (_player)
                 {
-                    _player.TakeDamage(100);
+                    _player.TakeDamage(damage);
                 }
             }
         }

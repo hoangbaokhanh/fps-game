@@ -14,6 +14,8 @@ namespace Fps.Input
         public Vector2 LookVector;
         public bool Fire;
         public bool Sprint;
+        public bool HandGun;
+        public bool Assult;
     }
     
     public class GameInput: ITickable, IInitializable
@@ -79,6 +81,8 @@ namespace Fps.Input
                 var move = GetAxis(InputAction.MoveHorizontal, InputAction.MoveVertical);
                 var look = GetAxis(InputAction.FireHorizontal, InputAction.FireVertical);
                 var isFire = GetButtonUp(InputAction.Fire);
+                var handgun = GetButtonUp(InputAction.SwitchHandGun);
+                var assault = GetButtonUp(InputAction.SwitchAssault);
                 var isSprint = GetButton(InputAction.Sprint);
                 
                 input.OnNext(new Input()
@@ -86,7 +90,9 @@ namespace Fps.Input
                     MoveVector = move,
                     LookVector = look,
                     Fire = isFire,
-                    Sprint = isSprint
+                    Sprint = isSprint,
+                    HandGun = handgun,
+                    Assult = assault
                 });
             }
         }

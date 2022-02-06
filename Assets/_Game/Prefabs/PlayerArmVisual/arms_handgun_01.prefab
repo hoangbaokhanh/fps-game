@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7823032793876527151, guid: a80130b989e3add40b2533dcedc8909e,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -254,7 +254,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -602,7 +602,7 @@ ParticleSystem:
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -5833,7 +5833,7 @@ ParticleSystem:
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10916,8 +10916,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visual: {fileID: 8897417252353726085}
-  muzzle: {fileID: 0}
-  spark: {fileID: 0}
+  muzzle: {fileID: 2930690196035858489}
+  spark: {fileID: 2929673174060403419}
   MaxAmmo: 13
   MaxDistance: 500
   Damage: 35
@@ -12100,7 +12100,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7823032793876527151, guid: a80130b989e3add40b2533dcedc8909e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -12228,7 +12228,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7823032793876527151, guid: a80130b989e3add40b2533dcedc8909e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f7ce534a0633b9847910ba117e2245d1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

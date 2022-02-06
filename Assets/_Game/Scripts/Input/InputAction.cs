@@ -7,6 +7,8 @@
         Fire,
         FireHorizontal,
         FireVertical,
-        Sprint
+        Sprint,
+        SwitchHandGun,
+        SwitchAssault
     }
 }

@@ -4,6 +4,6 @@ namespace Fps.Message
 {
     public class PickupItem
     {
-        public IItem Item;
+        public EItem Item;
     }
 }

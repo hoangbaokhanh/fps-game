@@ -354,7 +354,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {fileID: 0}
+  - {fileID: 756640363}
+  - {fileID: 224073207}
+  - {fileID: 123732188}
+  - {fileID: 2074669055}
+  - {fileID: 1867602816}
+  - {fileID: 146939962}
+  - {fileID: 1562355587}
+  - {fileID: 188301915}
   playerPrefab: {fileID: 5004291052486672231, guid: fd41e6a2277d4c24bb2de0160af217a8,
     type: 3}
   zombiePrefabs:
@@ -365,3 +372,7 @@ MonoBehaviour:
   - {fileID: 119274, guid: 37aad03d71f665f4486098bdb0ee76fa, type: 3}
   - {fileID: 123560, guid: 9bf48077aeda9314a808cf7bc2c5c407, type: 3}
   - {fileID: 147980, guid: c6f47ef0adb7df6438b00b227fcb37fd, type: 3}
+  battery: {fileID: 112412, guid: 25ccbba5e34d7b444948bfb647e87a07, type: 3}
+  fish: {fileID: 145182, guid: b34716bd869916e41a8758b2747901eb, type: 3}
+  medic: {fileID: 120558, guid: a16200c118391ce49b088aaf031568f9, type: 3}
+  water: {fileID: 130158, guid: d78136c016f70714992a8b1c167d1e39, type: 3}

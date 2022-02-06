@@ -1478,9 +1478,9 @@ MonoBehaviour:
   baseHealth: 50
   movementSpeed: 4
   damage: 100
+  bloodSpawn: {fileID: 441038}
   animationController: {fileID: -3040107879731427246}
   agent: {fileID: 2348351721829135338}
-  player: {fileID: 0}
 --- !u!82 &1724528441585373261
 AudioSource:
   m_ObjectHideFlags: 0

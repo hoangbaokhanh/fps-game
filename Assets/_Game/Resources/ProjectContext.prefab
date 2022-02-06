@@ -79,3 +79,7 @@ MonoBehaviour:
     type: 3}
   audioController: {fileID: -3902250474415884985, guid: 399b8e59be007094da76c613f9ed291a,
     type: 3}
+  poolManager: {fileID: 4224173857816887911, guid: 90570274efc1ca04b8a9b34b6d909830,
+    type: 3}
+  vfxManager: {fileID: -4668070888892879058, guid: 2727101e8ed7c9948a28dea818968a4c,
+    type: 3}
