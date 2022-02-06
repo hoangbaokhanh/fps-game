@@ -12169,6 +12169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 671852284472318849}
   - component: {fileID: 3093162267553138055}
+  - component: {fileID: 5493275712746917969}
   m_Layer: 8
   m_Name: Audio
   m_TagString: Untagged
@@ -12214,6 +12215,30 @@ MonoBehaviour:
   reloadOutOfAmmo: {fileID: 8300000, guid: fee3a21f251a4914cabce25b13e7d2a8, type: 3}
   walk: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
   run: {fileID: 8300000, guid: 0c58744c3b6fdd844b8348066c3f703e, type: 3}
+--- !u!167 &5493275712746917969
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265963712525966009}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 1
+  m_Room: -1000
+  m_RoomHF: -100
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.83
+  m_Reflections: -2602
+  m_ReflectionsDelay: 0.007
+  m_Reverb: 200
+  m_ReverbDelay: 0.011
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
 --- !u!1 &7403867919749498521
 GameObject:
   m_ObjectHideFlags: 0

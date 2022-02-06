@@ -66,6 +66,11 @@ namespace Fps.Character.Player
             // get attacked
         }
 
+        public void TakeDamage(int damage)
+        {
+            
+        }
+
         public void Heal(int healAmount)
         {
             health.Value = Mathf.Min(maxHealth, health.Value + healAmount);

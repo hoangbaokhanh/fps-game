@@ -1,4 +1,5 @@
 ﻿using System;
+using Fps.Gameplay;
 using Fps.Input;
 using Fps.Setting;
 using UnityEngine;
@@ -33,6 +34,7 @@ namespace Fps.Injection
             
             Container.BindInterfacesAndSelfTo<GameInput>().AsSingle().NonLazy();
             Container.Bind<AudioController>().FromComponentInNewPrefab(audioController).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().NonLazy();
         }
     }
 }

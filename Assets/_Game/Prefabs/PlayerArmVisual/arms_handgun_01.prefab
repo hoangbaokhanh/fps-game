@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3331423771906088767}
   - component: {fileID: 998396598099496023}
+  - component: {fileID: 4216401241156334992}
   m_Layer: 8
   m_Name: Audio
   m_TagString: Untagged
@@ -183,6 +184,30 @@ MonoBehaviour:
   reloadOutOfAmmo: {fileID: 8300000, guid: 5b907074256e36d41b92e89fb0790633, type: 3}
   walk: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
   run: {fileID: 8300000, guid: 0c58744c3b6fdd844b8348066c3f703e, type: 3}
+--- !u!167 &4216401241156334992
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033500810353399784}
+  m_Enabled: 1
+  m_MinDistance: 1
+  m_MaxDistance: 15
+  m_ReverbPreset: 1
+  m_Room: -1000
+  m_RoomHF: -100
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.83
+  m_Reflections: -2602
+  m_ReflectionsDelay: 0.007
+  m_Reverb: 200
+  m_ReverbDelay: 0.011
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
 --- !u!1 &2975350899341762501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10863,7 +10888,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationController: {fileID: 1374682655088651533}
   audioController: {fileID: 998396598099496023}
-  audioSource: {fileID: 0}
   grenadeSpawnPoint: {fileID: 3054679642777154401}
   bulletSpawnPoint: {fileID: 3054825983909291445}
 --- !u!114 &1374682655088651533
@@ -10892,7 +10916,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visual: {fileID: 8897417252353726085}
-  gunAudioSource: {fileID: 0}
   muzzle: {fileID: 0}
   spark: {fileID: 0}
   MaxAmmo: 13

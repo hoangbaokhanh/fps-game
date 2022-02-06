@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 5004291052486672229}
   - component: {fileID: 3747593884520793149}
   - component: {fileID: 768534848477590561}
+  - component: {fileID: 1495410012768509244}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -160,7 +161,15 @@ MonoBehaviour:
   playerCamera: {fileID: 3453298119844212861}
   assault: {fileID: 4018633969008304938, guid: 92605d955eb2f444f8ee827492d15760, type: 3}
   handgun: {fileID: 3057167520551625293, guid: 622aa68f5d1516249af8fdc6352cc873, type: 3}
-  shootDistance: 0
+  maxHealth: 2000
+--- !u!81 &1495410012768509244
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004291052486672231}
+  m_Enabled: 1
 --- !u!1001 &1682093575401129948
 PrefabInstance:
   m_ObjectHideFlags: 0
