@@ -1,4 +1,5 @@
-﻿using Fps.Input;
+﻿using Fps.Character.Weapon;
+using Fps.Input;
 using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
@@ -24,10 +25,13 @@ namespace Fps.Character.Player
         [SerializeField, Required, BoxGroup("Visual Prefab")]
         private GameObject handgun;
 
+        [SerializeField] private float shootDistance;
+
         [Inject] private GameInput gameInput;
 
         private ReactiveProperty<WeaponClass> wpClass = new ReactiveProperty<WeaponClass>(WeaponClass.AssaultRifle);
         private PlayerVisual playerVisual;
+        private IWeapon gun;
 
         private void Start()
         {
@@ -36,6 +40,16 @@ namespace Fps.Character.Player
             gameInput.SetActive(true);
         }
         
+        private void OnInput(Input.Input input)
+        {
+            Rotation(input.LookVector);
+            Move(input.MoveVector, input.Sprint);
+            
+            if (input.Fire)
+            {
+                Fire();
+            }
+        }
         
         private void OnWeaponChanged(WeaponClass weaponClass)
         {
@@ -64,6 +78,7 @@ namespace Fps.Character.Player
                 }
 
                 playerVisual = weapon.GetComponent<PlayerVisual>();
+                gun = weapon.GetComponent<Gun>();
 
                 if (playerVisual == null)
                 {
@@ -74,6 +89,11 @@ namespace Fps.Character.Player
             {
                 Debug.LogError("Cannot load visual of weapon class " + weaponClass);
             }
+        }
+
+        private void Fire()
+        {
+            gun.Attack(playerCamera.transform.position, playerCamera.transform.forward);
         }
 
 

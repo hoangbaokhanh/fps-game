@@ -77,3 +77,5 @@ MonoBehaviour:
     type: 3}
   rewiredManager: {fileID: 4541625114824050679, guid: a2db5c40974a2f84191b3b7df6abc95b,
     type: 3}
+  audioController: {fileID: -3902250474415884985, guid: 399b8e59be007094da76c613f9ed291a,
+    type: 3}

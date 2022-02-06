@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3432917456106042889}
   - component: {fileID: 3453298119844212861}
-  - component: {fileID: 3353327376911171807}
-  - component: {fileID: 3312871736564391031}
   m_Layer: 8
   m_Name: Gun Camera
   m_TagString: MainCamera
@@ -76,38 +74,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3353327376911171807
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3435595491023235389}
-  m_Enabled: 1
---- !u!167 &3312871736564391031
-AudioReverbZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3435595491023235389}
-  m_Enabled: 1
-  m_MinDistance: 10
-  m_MaxDistance: 15
-  m_ReverbPreset: 20
-  m_Room: -1000
-  m_RoomHF: -2000
-  m_DecayTime: 1.49
-  m_DecayHFRatio: 0.5
-  m_Reflections: -2466
-  m_ReflectionsDelay: 0.179
-  m_Reverb: -1926
-  m_ReverbDelay: 0.1
-  m_HFReference: 5000
-  m_Diffusion: 21
-  m_Density: 100
-  m_LFReference: 250
-  m_RoomLF: 0
 --- !u!1 &5004291052486672231
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +88,7 @@ GameObject:
   - component: {fileID: 768534848477590561}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,6 +160,7 @@ MonoBehaviour:
   playerCamera: {fileID: 3453298119844212861}
   assault: {fileID: 4018633969008304938, guid: 92605d955eb2f444f8ee827492d15760, type: 3}
   handgun: {fileID: 3057167520551625293, guid: 622aa68f5d1516249af8fdc6352cc873, type: 3}
+  shootDistance: 0
 --- !u!1001 &1682093575401129948
 PrefabInstance:
   m_ObjectHideFlags: 0

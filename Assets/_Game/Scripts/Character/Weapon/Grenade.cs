@@ -1,4 +1,6 @@
-﻿namespace Fps.Character.Weapon
+﻿using UnityEngine;
+
+namespace Fps.Character.Weapon
 {
     public class Grenade : IWeapon
     {
@@ -7,9 +9,9 @@
             throw new System.NotImplementedException();
         }
 
-        public void Attack()
+        public void Attack(Vector3 from, Vector3 to)
         {
-            throw new System.NotImplementedException();
+           
         }
     }
 }

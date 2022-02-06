@@ -1,5 +1,6 @@
 ﻿using System;
 using Fps.Input;
+using Fps.Setting;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,7 @@ namespace Fps.Injection
     {
         [SerializeField] private GameObject eventSystem;
         [SerializeField] private GameObject rewiredManager;
+        [SerializeField] private AudioController audioController;
         
         public override void InstallBindings()
         {
@@ -30,6 +32,7 @@ namespace Fps.Injection
                 .NonLazy();
             
             Container.BindInterfacesAndSelfTo<GameInput>().AsSingle().NonLazy();
+            Container.Bind<AudioController>().FromComponentInNewPrefab(audioController).AsSingle().NonLazy();
         }
     }
 }

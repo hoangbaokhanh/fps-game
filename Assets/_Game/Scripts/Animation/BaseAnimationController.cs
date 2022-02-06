@@ -17,7 +17,9 @@ namespace Fps.Animation
         AimOut,
         Pose,
         Reload,
-        ReloadOutOfAmmo
+        ReloadOutOfAmmo,
+        Attack,
+        StopAttack
     }
 
     public class BaseAnimationController : MonoBehaviour

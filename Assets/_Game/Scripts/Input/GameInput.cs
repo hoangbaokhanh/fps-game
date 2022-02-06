@@ -61,6 +61,11 @@ namespace Fps.Input
         {
             return rewiredPlayer.GetButtonDown((int) action);
         }
+        
+        private bool GetButtonUp(InputAction action)
+        {
+            return rewiredPlayer.GetButtonUp((int) action);
+        }
         private bool GetButton(InputAction action)
         {
             return rewiredPlayer.GetButton((int) action);
@@ -73,7 +78,7 @@ namespace Fps.Input
             {
                 var move = GetAxis(InputAction.MoveHorizontal, InputAction.MoveVertical);
                 var look = GetAxis(InputAction.FireHorizontal, InputAction.FireVertical);
-                var isFire = GetButton(InputAction.Fire);
+                var isFire = GetButtonUp(InputAction.Fire);
                 var isSprint = GetButton(InputAction.Sprint);
                 
                 input.OnNext(new Input()
