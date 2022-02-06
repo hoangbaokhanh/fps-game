@@ -24,6 +24,8 @@ namespace Fps.Gameplay
         
         [Inject] private DiContainer container;
 
+        private List<ZombieController> zombies = new List<ZombieController>();
+
 
         public PlayerController SpawnPlayer()
         {
@@ -46,7 +48,9 @@ namespace Fps.Gameplay
             var zombieObj = container.InstantiatePrefab(zombiePrefab, spawnPoint.position, Quaternion.identity, spawnTransform);
             if (zombieObj)
             {
-                return zombieObj.GetComponent<ZombieController>();
+                var zombieControl =  zombieObj.GetComponent<ZombieController>();
+                zombies.Add(zombieControl);
+                return zombieControl;
             }
             else
             {
@@ -54,21 +58,31 @@ namespace Fps.Gameplay
             }
         }
 
+        public void ClearZombie()
+        {
+            foreach (var zombie in zombies)
+            {
+                Destroy(zombie.gameObject);
+            }
+            
+            zombies.Clear();
+        }
+
         public void SpawnItem(EItem item, Vector3 position)
         {
             switch (item)
             {
                 case EItem.MedicBag:
-                    Instantiate(medic, new Vector3(position.x, medic.transform.position.y, position.z), Quaternion.identity, spawnTransform);
+                    container.InstantiatePrefab(medic, new Vector3(position.x, medic.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 case EItem.Battery:
-                    Instantiate(battery, new Vector3(position.x, battery.transform.position.y, position.z), Quaternion.identity, spawnTransform);
+                    container.InstantiatePrefab(battery, new Vector3(position.x, battery.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 case EItem.Fish:
-                    Instantiate(fish, new Vector3(position.x, fish.transform.position.y, position.z), Quaternion.identity, spawnTransform);
+                    container.InstantiatePrefab(fish, new Vector3(position.x, fish.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 case EItem.WaterBottle:
-                    Instantiate(water, new Vector3(position.x, water.transform.position.y, position.z), Quaternion.identity, spawnTransform);
+                    container.InstantiatePrefab(water, new Vector3(position.x, water.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(item), item, null);
