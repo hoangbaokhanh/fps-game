@@ -59,6 +59,11 @@ namespace Fps.Character.Weapon
                 }
             }
         }
+
+        public async UniTask ReloadWeapon()
+        {
+            await ReloadWeapon(ammo.Value == 0);
+        }
         
         public async UniTask ReloadWeapon(bool isOutOfAmmo)
         {

@@ -49,6 +49,10 @@ namespace Fps.Character.Player
             animationController.Aim();
         }
 
+        public void Hurt()
+        {
+            audioController.Hurt();
+        }
         public void Reload(bool isOutOfAmmo)
         {
             audioController.Reload(isOutOfAmmo);

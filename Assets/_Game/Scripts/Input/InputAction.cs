@@ -9,6 +9,7 @@
         FireVertical,
         Sprint,
         SwitchHandGun,
-        SwitchAssault
+        SwitchAssault,
+        Reload
     }
 }

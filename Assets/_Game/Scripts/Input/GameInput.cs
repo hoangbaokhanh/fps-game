@@ -16,6 +16,7 @@ namespace Fps.Input
         public bool Sprint;
         public bool HandGun;
         public bool Assult;
+        public bool Reload;
     }
     
     public class GameInput: ITickable, IInitializable
@@ -83,6 +84,7 @@ namespace Fps.Input
                 var isFire = GetButtonUp(InputAction.Fire);
                 var handgun = GetButtonUp(InputAction.SwitchHandGun);
                 var assault = GetButtonUp(InputAction.SwitchAssault);
+                var reload = GetButtonUp(InputAction.Reload);
                 var isSprint = GetButton(InputAction.Sprint);
                 
                 input.OnNext(new Input()
@@ -92,7 +94,8 @@ namespace Fps.Input
                     Fire = isFire,
                     Sprint = isSprint,
                     HandGun = handgun,
-                    Assult = assault
+                    Assult = assault,
+                    Reload = reload
                 });
             }
         }

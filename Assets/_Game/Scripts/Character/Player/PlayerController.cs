@@ -1,8 +1,9 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Fps.Character.Weapon;
 using Fps.Common;
 using Fps.Input;
-using Fps.Item;
+using Fps.UI;
 using NaughtyAttributes;
 using UniRx;
 using UnityEngine;
@@ -29,13 +30,15 @@ namespace Fps.Character.Player
         private GameObject handgun;
 
         [SerializeField] private int maxHealth;
-
+        
+        [SerializeField] private PlayerHud hud;
+        
         [Inject] private GameInput gameInput;
 
         private ReactiveProperty<WeaponClass> wpClass = new ReactiveProperty<WeaponClass>(WeaponClass.AssaultRifle);
         private IntReactiveProperty health = new IntReactiveProperty();
         public IObservable<int> Health => health.AsObservable();
-
+        
         private PlayerVisual playerVisual;
         private Gun gun;
 
@@ -43,6 +46,7 @@ namespace Fps.Character.Player
         {
             wpClass.Where(wp => wp != WeaponClass.None).Subscribe(OnWeaponChanged).AddTo(this);
             health.Value = maxHealth;
+            hud.SetMaxHealth(maxHealth);
             gameInput.InputStream.Subscribe(OnInput).AddTo(this);
             gameInput.SetActive(true);
             
@@ -50,6 +54,8 @@ namespace Fps.Character.Player
                 .Where(snapshot => snapshot.Previous > snapshot.Current)
                 .Subscribe(_ => OnHurt())
                 .AddTo(this);
+
+            health.Subscribe(OnHealthChanged).AddTo(this);
         }
         
         private void OnInput(Input.Input input)
@@ -71,16 +77,26 @@ namespace Fps.Character.Player
             {
                 SetWeaponClass(WeaponClass.AssaultRifle);
             }
+
+            if (input.Reload)
+            {
+                gun.ReloadWeapon().Forget();
+            }
         }
 
         private void OnHurt()
         {
-            // get attacked
+            playerVisual.Hurt();
+        }
+
+        private void OnHealthChanged(int health)
+        {
+            hud.SetHealth(health);
         }
 
         public void TakeDamage(int damage)
         {
-            
+            health.Value -= damage;
         }
 
         public void Heal(int healAmount)

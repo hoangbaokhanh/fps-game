@@ -1,4 +1,6 @@
-﻿using Fps.Character.Player;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using Fps.Character.Player;
 using Fps.Common;
 using Fps.Message;
 using UniRx;
@@ -17,13 +19,16 @@ namespace Fps.Item
     public class Item : MonoBehaviour
     {
         [SerializeField] private EItem itemKind;
-        private void OnTriggerEnter(Collider other)
+        [SerializeField] private AudioSource audioSource;
+        private async void OnTriggerEnter(Collider other)
         {
             if (other.IsPlayer())
             {
                 var player = other.GetComponent<PlayerController>();
                 if (player)
                 {
+                    audioSource.Play();
+                   await UniTask.Delay(TimeSpan.FromSeconds(1));
                     MessageBroker.Default.Publish(new PickupItem()
                     {
                         Item = itemKind

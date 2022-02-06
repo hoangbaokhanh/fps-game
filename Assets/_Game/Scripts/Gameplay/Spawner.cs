@@ -6,7 +6,6 @@ using Fps.Common;
 using Fps.Item;
 using UnityEngine;
 using Zenject;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Fps.Gameplay
 {
@@ -21,6 +20,8 @@ namespace Fps.Gameplay
         [SerializeField] private GameObject medic;
         [SerializeField] private GameObject water;
 
+        [SerializeField] private Transform spawnTransform;
+
         [Inject] private GameManager gameManager;
         [Inject] private DiContainer container;
 
@@ -32,7 +33,7 @@ namespace Fps.Gameplay
         public PlayerController SpawnPlayer()
         {
             var spawnPoint = spawnPoints.Random();
-            var playerObj = container.InstantiatePrefab(playerPrefab, spawnPoint.position, Quaternion.identity, transform);
+            var playerObj = container.InstantiatePrefab(playerPrefab, spawnPoint.position, Quaternion.identity, spawnTransform);
             if (playerObj)
             {
                 return playerObj.GetComponent<PlayerController>();
@@ -47,7 +48,7 @@ namespace Fps.Gameplay
         {
             var spawnPoint = spawnPoints.Random();
             var zombiePrefab = zombiePrefabs.Random();
-            var zombieObj = container.InstantiatePrefab(zombiePrefab, spawnPoint.position, Quaternion.identity, transform);
+            var zombieObj = container.InstantiatePrefab(zombiePrefab, spawnPoint.position, Quaternion.identity, spawnTransform);
             if (zombieObj)
             {
                 return zombieObj.GetComponent<ZombieController>();
@@ -63,16 +64,16 @@ namespace Fps.Gameplay
             switch (item)
             {
                 case EItem.MedicBag:
-                    Instantiate(medic, new Vector3(position.x, medic.transform.position.y, position.z), Quaternion.identity);
+                    Instantiate(medic, new Vector3(position.x, medic.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 case EItem.Battery:
-                    Instantiate(battery, new Vector3(position.x, battery.transform.position.y, position.z), Quaternion.identity);
+                    Instantiate(battery, new Vector3(position.x, battery.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 case EItem.Fish:
-                    Instantiate(fish, new Vector3(position.x, fish.transform.position.y, position.z), Quaternion.identity);
+                    Instantiate(fish, new Vector3(position.x, fish.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 case EItem.WaterBottle:
-                    Instantiate(water, new Vector3(position.x, water.transform.position.y, position.z), Quaternion.identity);
+                    Instantiate(water, new Vector3(position.x, water.transform.position.y, position.z), Quaternion.identity, spawnTransform);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(item), item, null);
