@@ -21,14 +21,9 @@ namespace Fps.Gameplay
         [SerializeField] private GameObject water;
 
         [SerializeField] private Transform spawnTransform;
-
-        [Inject] private GameManager gameManager;
+        
         [Inject] private DiContainer container;
 
-        private void Start()
-        {
-            gameManager.SetSpawner(this);
-        }
 
         public PlayerController SpawnPlayer()
         {

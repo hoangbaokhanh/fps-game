@@ -2868,7 +2868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 200
   movementSpeed: 2
-  damage: 150
+  damage: 250
   bloodSpawn: {fileID: 469854}
   animationController: {fileID: 3478779619585734791}
   agent: {fileID: -8545864966731263120}
@@ -2894,7 +2894,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

@@ -1475,9 +1475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d225bee705ba4261b282db42c5e24581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 50
+  baseHealth: 100
   movementSpeed: 4
-  damage: 100
+  damage: 150
   bloodSpawn: {fileID: 441038}
   animationController: {fileID: -3040107879731427246}
   agent: {fileID: 2348351721829135338}
@@ -1503,7 +1503,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

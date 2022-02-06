@@ -3,6 +3,7 @@ using Fps.Common;
 using Fps.Gameplay;
 using Fps.Input;
 using Fps.Setting;
+using Fps.UI;
 using UnityEngine;
 using Zenject;
 
@@ -15,12 +16,12 @@ namespace Fps.Injection
         [SerializeField] private AudioController audioController;
         [SerializeField] private GameObject poolManager;
         [SerializeField] private VfxManager vfxManager;
+        [SerializeField] private GameManager gameManager;
+        [SerializeField] private Spawner spawner;
+        [SerializeField] private UIRoot uiRoot;
          
         public override void InstallBindings()
         {
-            Debug.Log("Injection init");
-            
-            // bind prefabs
             Container.Bind<Transform>().WithId(Guid.NewGuid())
                 .FromComponentInNewPrefab(rewiredManager)
                 .WithGameObjectName(rewiredManager.name)
@@ -46,8 +47,9 @@ namespace Fps.Injection
             Container.BindInterfacesAndSelfTo<GameInput>().AsSingle().NonLazy();
             Container.Bind<AudioController>().FromComponentInNewPrefab(audioController).AsSingle().NonLazy();
             Container.Bind<VfxManager>().FromComponentInNewPrefab(vfxManager).AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().NonLazy();
-            
+            Container.Bind<Spawner>().FromComponentInNewPrefab(spawner).AsSingle().NonLazy();
+            Container.Bind<GameManager>().FromComponentInNewPrefab(gameManager).AsSingle().NonLazy();
+            Container.Bind<UIRoot>().FromComponentInNewPrefab(uiRoot).AsSingle().NonLazy();
         }
     }
 }

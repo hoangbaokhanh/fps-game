@@ -83,3 +83,7 @@ MonoBehaviour:
     type: 3}
   vfxManager: {fileID: -4668070888892879058, guid: 2727101e8ed7c9948a28dea818968a4c,
     type: 3}
+  gameManager: {fileID: -412588033719223926, guid: 89970bb68c6e2054a9d4bc5367253d0a,
+    type: 3}
+  spawner: {fileID: 4688716274557589428, guid: d566e0ce3e7558748aecc1080e912643, type: 3}
+  uiRoot: {fileID: 4798921229226255188, guid: 83bfad0dc85c0de498a317f633589372, type: 3}
