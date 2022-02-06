@@ -21,6 +21,7 @@ namespace Fps.Gameplay
     public class GameManager: MonoBehaviour
     {
         [Inject] private Spawner spawner;
+        [Inject] private DiContainer diContainer;
         private CompositeDisposable spawnZombieDisposable = new CompositeDisposable();
         private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -57,7 +58,7 @@ namespace Fps.Gameplay
         public void OnStartGame()
         {
             var q = RandomQuest();
-            var qObject = Instantiate(q.gameObject);
+            var qObject = diContainer.InstantiatePrefab(q.gameObject);
             currentQuest = qObject.GetComponent<QuestBehavior>();
             
             playerController = spawner.SpawnPlayer();
@@ -66,6 +67,11 @@ namespace Fps.Gameplay
             {
                 spawner.SpawnZombie();
             }).AddTo(spawnZombieDisposable);
+        }
+
+        public void OnEndGame()
+        {
+            Destroy(currentQuest.gameObject);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Fps.UI
         private Dictionary<Type, string> menuDict = new Dictionary<Type, string>();
         
 
-        public void PushMenu(string menu)
+        public ScreenContainer PushMenu(string menu)
         {
             var menuResource = menuResources.Find(m => m.Name == menu);
             if (menuResource != null)
@@ -27,10 +27,13 @@ namespace Fps.UI
                 var menuObj = Instantiate(menuResource.Prefab);
                 var menuComp = menuObj.GetComponent<ScreenContainer>();
                 menuStack.Push(menuComp);
+                return menuComp;
             }
+
+            throw new Exception("Cannot init menu");
         }
 
-        public void ReplaceMenu(string menu)
+        public ScreenContainer ReplaceMenu(string menu)
         {
             var menuResource = menuResources.Find(m => m.Name == menu);
             if (menuResource != null)
@@ -38,12 +41,14 @@ namespace Fps.UI
                 var menuObj = Instantiate(menuResource.Prefab);
                 var menuComp = menuObj.GetComponent<ScreenContainer>();
                 menuStack.Replace(menuComp);
+                return menuComp;
             }
+            throw new Exception("Cannot init menu");
         }
 
         public void Pop()
         {
-            if (menuStack.Size > 1)
+            if (menuStack.Size > 0)
             {
                 menuStack.Pop();
             }

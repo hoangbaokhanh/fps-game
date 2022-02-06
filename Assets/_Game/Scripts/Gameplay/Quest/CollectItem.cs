@@ -10,6 +10,7 @@ namespace Fps.Gameplay
     {
         [SerializeField] private CollectItemQuest quest;
         [SerializeField] private TMP_Text result;
+        
         private EItem targetItem;
         private int target;
         private IntReactiveProperty progress = new IntReactiveProperty();
@@ -31,16 +32,6 @@ namespace Fps.Gameplay
         private void OnItemCollected(PickupItem evt)
         {
             progress.Value += 1;
-        }
-        
-        private void OnWin()
-        {
-            // handle win logic
-        }
-
-        public override void OnLoose()
-        {
-            // handle loose logic
         }
     }
 }

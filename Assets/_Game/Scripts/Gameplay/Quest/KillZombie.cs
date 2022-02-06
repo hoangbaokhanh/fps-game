@@ -30,15 +30,5 @@ namespace Fps.Gameplay
         {
             progress.Value += 1;
         }
-        
-        private void OnWin()
-        {
-            // handle win logic
-        }
-
-        public override void OnLoose()
-        {
-            
-        }
     }
 }
