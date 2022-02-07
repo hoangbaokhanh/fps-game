@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Fps.Character.Weapon;
 using Fps.Common;
 using Fps.Input;
+using Fps.Message;
 using Fps.UI;
 using NaughtyAttributes;
 using UniRx;
@@ -97,6 +98,10 @@ namespace Fps.Character.Player
         public void TakeDamage(int damage)
         {
             health.Value -= damage;
+            if (health.Value <= 0)
+            {
+                MessageBroker.Default.Publish(new PlayerDeath());
+            }
         }
 
         public void Heal(int healAmount)
@@ -148,7 +153,7 @@ namespace Fps.Character.Player
         {
             gun.Attack(playerCamera.transform.position, playerCamera.transform.forward);
         }
-
+        
         
         [Button]
         private void SwitchToAssault()
